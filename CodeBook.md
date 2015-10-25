@@ -3,7 +3,7 @@
 ##Project Description
 The purpose of this project is to demonstrate and apply data cleaning concepts and techniques covered in Getting and Cleaning Data course. The goal is to produce an output that meets all the requirements outlined in tidy data principles. 
 
-##Creating tidy data
+##Study Design - Creating tidy data
 The raw dataset is downloaded via The University of California at Irvine Machine Learning Repository website. It contains human activity signals collected using smartphones equipped with inertial censors.  Data files are available to download here.
 
 The data files relevant to this project are:
@@ -24,7 +24,7 @@ The software utilized to transform the raw files into a tidy dataset is R, which
 4	Appropriately labels the data set with descriptive variable names.
 5	Transform into a tidy data set with the mean of each variable by activity and by subject.
 
-##Variables in tiny_data.txt file
+##Code Book - Variables in tiny_data.txt file
 The resulting tidy data includes the following variables:
 *	An identifier of the subjects participated in the experiment.
 *	Activity labels.
