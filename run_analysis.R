@@ -1,5 +1,4 @@
 library(dplyr)
-library(tidyr)
 
 ## 1. Merges the training and the test sets to create one data set
 # Training dataset
@@ -22,6 +21,8 @@ test_set <- test_set %>% mutate(ds_source = c("test"))
 result_set <- rbind(train_set, test_set)
 
 ## 2. Extracts mean and standard deviation for each measurement
+feature <- read.csv("features.txt", header = FALSE, sep="")
+
 findString <- function(pattern,x) any(grepl(pattern, x, fixed = TRUE))
 
 for (i in 1:nrow(feature)) {
@@ -46,7 +47,6 @@ result_set$activity[result_set$activity == "6"] <- "LAYING"
 
 
 ## 4. Appropriately labels the data set with descriptive variable names
-feature <- read.csv("features.txt", header = FALSE, sep="")
 feature_sub <- data.frame(feature$V2[grepl("-std()", feature$V2, fixed =TRUE)|grepl("-mean()", feature$V2, fixed =TRUE)])
 
 for (i in 1:nrow(feature_sub)) {
@@ -58,7 +58,6 @@ tidy_ds <- result_set %>%
   group_by(subject, activity)  %>%
   summarize_each(funs(mean), -subject, -activity, -ds_source) %>%
   arrange(subject, activity)
-
 
 ##Generate tidy_ds.txt to upload
 ##write.table(tidy_ds, file = "tidy_ds.txt", row.names = FALSE)
